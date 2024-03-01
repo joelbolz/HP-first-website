@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet"  type= "text/css" href= "{{ url_for('static',filename='styles/stylesheet.css') }}">
+        <link rel="icon" href= "{{ url_for('static',filename='images/logo2_icon.ico') }}">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <div class="topnavbar">
+          <div id="topnavbar-container">
+            <a href="/"><img src= "{{ url_for('static',filename='images/logo2.png') }}" ></a>
+            <ul class="topnav-links">
+              <li><a class="home" href="/">Home</a></li> 
+              <li><a class="user" href="/dashboard">Dashboard</a></li>
+            </ul>
+            
+
+            {% if not current_user.is_authenticated: %}
+            <div class="login-signup-container">
+              <ul class="login-links">
+                <li class="login-li"><a class="login" href="/login">Log in</a></li>
+                <li class="signup-li"><a class="signup" href="/sign-up">Sign up</a></li>
+              </ul>
+            </div>
+            {% else: %}
+            <div class="login-signup-container">
+              <ul class="login-links">
+                <li><a class="username" href="/user">{{current_user.username|e}}</a></li>
+                <li class="login-li"><a class="logout" href="/logout">Log out</a></li>
+              </ul>
+            </div>
+            {% endif %}
+            
+           </div>
+        </div>
+        <div class="content">
+          {% block content %}
+          {% endblock %} 
+        </div>
+         
+      </body>
+</html>

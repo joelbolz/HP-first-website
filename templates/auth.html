@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet"  type= "text/css" href= "{{ url_for('static',filename='styles/stylesheet.css') }}">
+        <link rel="icon" href= "{{ url_for('static',filename='images/logo2_icon.ico') }}">
+        {% block title %}
+        {% endblock %}
+        
+    </head>
+    <body id="login-page">
+        <div id="login-hover-card">
+
+            <div id="banner" >
+                <img src="{{ url_for('static',filename='images/banner.png') }}">
+                <a href="/"><img src="{{ url_for('static',filename='images/logo2.png') }}" id="loginlogo"></a>
+            </div>
+
+            <div id="form_">
+                {% block form %}
+                {% endblock %}
+               
+            </div>
+            
+        </div>              
+      </body>
+</html>

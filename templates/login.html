@@ -1,0 +1,24 @@
+{% extends "auth.html" %}
+{% block title %}
+<title>Login &#8211; happypants</title>
+{% endblock %}
+{% block form %}
+<form action="#" method="post">
+    {{ form.hidden_tag() }}
+    <h1>Log in</h1>
+    <div class="input-wrapper">
+        {{ form.username }}
+        <label class="label" for="username">Username</label>
+    </div>
+    <div class="input-wrapper">
+        {{ form.password }}
+        <label class="label" for="password">Password</label>
+    </div>
+    <div class="input-wrapper">
+        <p>{{ form.submit(class="button") }}</p>
+    </div>
+</form>
+<div class="alt">
+    <p>Don't have an account yet? <a class="sign-up" href="/sign-up">Sign-up</a>!</p>
+</div>
+{% endblock %}
