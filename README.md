@@ -12,7 +12,7 @@ Setup Virtual Environment and install dependencies
 source .venv/bin/activate
 ```
 ```bash
-pip install flask, flask_sqlalchemy, flask_login, flask_wtf, flask_bcrypt, wtforms
+pip install flask flask_sqlalchemy flask_login flask_wtf flask_bcrypt wtforms
 ```
 
 ## To run the flask_app, run the follwing with the Virtual Environment running
