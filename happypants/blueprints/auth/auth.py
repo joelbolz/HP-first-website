@@ -1,9 +1,11 @@
-from flask import redirect, render_template, url_for, flash, Blueprint
+from flask import redirect, render_template, url_for, flash, request, Blueprint
 from flask_login import login_user, LoginManager, login_required, logout_user
 from happypants.models.users import User
 from happypants.db import db
 from happypants.encrypt import bcrypt
-from .forms import SignupForm, LoginForm
+from .forms import SignupForm, LoginForm, flash_errors
+from wtforms.validators import ValidationError
+from flask import get_flashed_messages
 
 
 bp = Blueprint("auth", __name__, url_prefix="/auth", static_folder="static", template_folder="templates")
@@ -23,7 +25,13 @@ def login():
             if bcrypt.check_password_hash(user.password, form.password.data):
                 login_user(user)
                 return redirect(url_for("dashboard"))
-    return render_template("login.html", form=form)
+            else:
+                form.password.errors.append("Password incorrect!")
+
+    flash_errors(form)
+    
+    rq_method = request.method
+    return render_template("login.html", form=form, rq_method=rq_method)
 
 
 @bp.route("/sign-up", methods=["POST", "GET"])
@@ -35,9 +43,11 @@ def sign_up():
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for("auth.login"))
-    flash(form.errors)
+    
+    flash_errors(form)
+    rq_method = request.method
+    return render_template("signup.html", form=form, rq_method=rq_method)
 
-    return render_template("signup.html", form=form)
 
 
 @bp.route("/logout")

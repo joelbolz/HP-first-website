@@ -19,14 +19,14 @@
                 {% endif %}
             {% endwith %}
         </div>
-        <div id="login-hover-card">
+        <div id="login-hover-card-noanim">
 
             <div id="banner" >
                 <img src="{{ url_for('auth.static',filename='images/banner.png') }}">
                 <a href="/"><img src="{{ url_for('static',filename='images/logo2.png') }}" id="loginlogo"></a>
             </div>
 
-            <div id="form_">
+            <div id="form_-noanim">
                 {% block form %}
                 {% endblock %}
                 

@@ -1,4 +1,10 @@
+{% if rq_method == "GET": %}
 {% extends "auth.html" %}
+{% else %}
+{% extends "auth_no_anim.html" %}
+{% endif %}
+
+
 {% block title %}
 <title>Login &#8211; happypants</title>
 {% endblock %}
@@ -18,6 +24,9 @@
         <p>{{ form.submit(class="button") }}</p>
     </div>
 </form>
+
+
+
 <div class="alt">
     <p>Don't have an account yet? <a class="sign-up" href="/auth/sign-up">Sign-up</a>!</p>
 </div>

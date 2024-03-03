@@ -1,4 +1,9 @@
+{% if rq_method == "GET": %}
 {% extends "auth.html" %}
+{% else %}
+{% extends "auth_no_anim.html" %}
+{% endif %}
+
 {% block title %}
 <title>Sign up &#8211; happypants</title>
 {% endblock %}
@@ -26,7 +31,4 @@
     <div class="alt">
         <p>Already have an account? <a class="login" href="/auth/login">Log in</a>!</p>
     </div>
-    {% for error in form.password.errors %}
-    {{ error }}
-{% endfor %}   
 {% endblock %}
