@@ -1,34 +1,43 @@
+:root{
+    --topnavbar-height: 80px;
+}
+
+html{
+    height: 100%;
+}
 body{
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
     margin: 0px;
-    background: rgb(36, 36, 36);
+    background: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
 }
 
 .content{
+    display: flex;
+    flex-flow: column wrap;
     color: white;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    max-width: 100%;
     margin-top: 80px;
-    margin-bottom:  80px;
+    margin-bottom: 21px;
 }
 .welcome{
-    background-color: rgb(38, 38, 38);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    width: 800px;
-    margin: 0 auto;
-   
-    color: white;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    
+    position: relative;
+    display: flex;
+    flex-direction: column wrap;
+
+    padding-top: 150px;
+    left: 100px;
+    width: 30%;
 }
 .welcome h1{
-    padding: 20px
+    line-height: 80px;
+    font-weight: 300;
+    font-size: 60px;
+    color: black;
 }
-
-.welcome p{
-    padding: 20px;
-    line-height: 1.8;
-    text-align:left;
-}
-
 
 .error-container{
     position: fixed;
@@ -64,151 +73,121 @@ body{
     padding: 6px 20px 6px 20px;
 
     color: rgb(255, 58, 58);
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     list-style-type: none;
 }
+
 .topnavbar{
+    display: flex;
     position: fixed;
     top:0;
+    height: var(--topnavbar-height);
+    z-index: 10;
     width: 100%;
-    background: linear-gradient(0deg, rgba(0,0,0,0)  , rgba(0,0,0,1) 80%);
-    overflow: hidden;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    justify-content: center;
+    background-color: black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.login-signup-container{
-    display: block;
+.topnav-left-section{
+    display: flex;
+    justify-content: flex-end;
+    width: 25%;
+    top:auto;
+    bottom: auto;
+}
+.topnav-left-section h1{
+    color:black;
+    background-color: white;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0 30px 0 0;
+    padding: 0 30px 0 30px;
+    line-height: var(--topnavbar-height);
+    height: var(--topnavbar-height);
+
+}
+#topnavbar-logo{
+    width: 60px;
+    height: auto;
+    padding: 10px 30px 10px 30px;
+}
+.topnav-links{
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
     position: relative;
-    float: right;
+    top:auto;
+    bottom: auto;
 }
-
-.signup-li{
-    list-style-type: none;
-    padding-left: 0px;
-    height: 24px;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    display:inline;
-}
-.login-li{
-    list-style-type: none;
-    padding-left: 0px;
-    height: 24px;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    display:inline;
-}
-.login-links .signup{
-    position: absolute;
-    width: 60px;
-    display: block;
-    float: right;
-    right: 125px;
-    top:20px;
-    line-height: 20px;
-    padding: 10px;
-    padding-right: 20px;
-    padding-left: 20px;
-
-    border-radius: 25px;
-    background: linear-gradient(45deg, rgb(0, 0, 0) , rgb(255, 114, 67));
-    
-    box-shadow: 2px 0 3px 0 rgba(0, 0, 0, .8);
-}
-.login-links .login{
-    position: absolute;
-    width: 100px;
-    display: block;
-    float: right;
-    right: 50px;
-    top:20px;
-    line-height: 20px;
-    padding: 10px;
-    padding-right: 20px;
-
-    border-radius: 25px;
-    background-color: rgb(36,36,36);
-    text-align: right; 
-}
-.login-links .username{
-    position: absolute;
-    display: block;
-    color:white;
-    float:right;
-    right: 150px;
-    line-height: 78px;
-    text-align: right;
-    padding: 0;
-}
-.login-links .username:hover{
-    position: absolute;
-    display: block;
-    color:white;
-    float:right;
-    right: 150px;
-    line-height: 78px;
-    text-align: right;
-    padding: 0;
-}
-.login-links .logout{
-    position: absolute;
-    width: 60px;
-    display: block;
-    float: right;
-    right: 30px;
-    top:20px;
-    line-height: 20px;
-    padding: 10px;
-    padding-right: 20px;
-    padding-left: 20px;
-
-    border-radius: 25px;
-    background: linear-gradient(45deg, rgb(0, 0, 0) , rgb(255, 114, 67));
-    
-    box-shadow: 2px 0 3px 0 rgba(0, 0, 0, .8);
-}
-.topnavbar .login-signup-container .login-li a:hover{
-    background:  linear-gradient(45deg, rgba(0, 0, 0, 1) , rgb(196, 52, 0));
-} 
-.topnavbar .login-signup-container .signup-li a:hover{
-    background:  linear-gradient(45deg, rgba(0, 0, 0, 1) , rgb(196, 52, 0));
-}   
-
-.topnavbar img{
-    width: 90px;
-    height: 50px;
-    padding: 17px;
-    padding-left: 70px;
-}
-.topnavbar ul {
-    padding-left: 0px;
-    margin: 0px;
-    text-align: center;
-    display:inline-block;
-    vertical-align:top;
-}
-.topnavbar li {
-    list-style-type: none;
-    padding-left: 30px;
-    height: 24px;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    display:inline;
-}
-.topnavbar li a {
-    color: white;
-    font-size: 16px;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+.topnav-links a{
+    padding: 0 20px 0 20px;
+    line-height: var(--topnavbar-height);
+    height: var(--topnavbar-height);
     text-decoration: none;
-    line-height: 70px;
-    padding: 30px 15px;
-    opacity: 1;
+    color: white;
+    transition: 0.3s ease-in-out;
+    &:hover{background-color: rgb(196, 76, 36);
+    transition: 0.3s ease-in-out;}
 }
+.topnav-right-section{
+    display: flex;
+    justify-content: flex-end;
+    width: 25%;
 
-
-.topnavbar .topnav-links li a:hover{
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) , rgb(127, 34, 0));
+    display: flex;
+    top:auto;
+    bottom: auto;
 }
-
+.dropdown{
+    position: relative;
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    padding-right: 30px;
+}
+.dropdown-button{
+    position: relative;
+    line-height: var(--topnavbar-height);
+    height: var(--topnavbar-height);
+    font-size: inherit;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: inherit;
+    text-align: right;
+    background-color: inherit;
+}
+.dropdown-content{
+    z-index: -1;
+    display: none;
+    position: absolute;
+    padding-top:var(--topnavbar-height);
+    min-width: 100%;
+    background-color: rgb(196, 76, 36);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    animation: dropdown .3s ease-in;
+}
+@keyframes dropdown {
+    0%   { 
+    transform: translateY(-100%); 	
+    opacity: 0%;	
+    }
+    100% { 
+    transform: translateY(0%); 
+    opacity: 100%;
+    } 
+}
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-size: 14px;
+    &:hover{background-color: black;}
+}
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+}
 
 #login-page{
     background-color: white;
@@ -289,7 +268,6 @@ body{
     font-size: x-large;
     color: black;
     text-align: left;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-radius: 25px;
     padding: 20px;
 
@@ -302,7 +280,6 @@ body{
     font-size: x-large;
     color: black;
     text-align: left;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-radius: 25px;
     padding: 20px;
 
@@ -454,7 +431,22 @@ body{
 .alt p{
     font-size: small;
     color: rgb(109, 109, 109);
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     text-align: center;
 }
 
+.bottombar{
+    z-index: 1;
+    display: flex;
+    height: 100px;
+    margin-top:auto;
+    width: 100%;
+    justify-content:center;
+    background-color: black;
+}
+.bottombar h1{
+    color: white;
+    font-size: small;
+    font-weight: 300;
+    line-height: 80px;
+    height: 80px;
+}

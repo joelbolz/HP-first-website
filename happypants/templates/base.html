@@ -3,40 +3,49 @@
     <head>
         <link rel="stylesheet"  type= "text/css" href= "{{ url_for('static',filename='styles/stylesheet.css') }}">
         <link rel="icon" href= "{{ url_for('static',filename='images/logo2_icon.ico') }}"/>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400" rel="stylesheet">
+
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
-        <div class="topnavbar">
-          <div id="topnavbar-container">
-            <a href="/"><img src= "{{ url_for('static',filename='images/logo2.png') }}" ></a>
-            <ul class="topnav-links">
-              <li><a class="home" href="/">Home</a></li> 
-              <li><a class="user" href="/dashboard">Dashboard</a></li>
-            </ul>
-            
 
-            {% if not current_user.is_authenticated: %}
-            <div class="login-signup-container">
-              <ul class="login-links">
-                <li class="login-li"><a class="login" href="/auth/login">Log in</a></li>
-                <li class="signup-li"><a class="signup" href="/auth/sign-up">Sign up</a></li>
-              </ul>
+        <header class="topnavbar">
+          <div class="topnav-left-section">
+            <h1 id="home">happypants.</h1>
+          </div>
+          <nav class="topnav-links">
+            <a class="home" href="/">HOME</a>
+            <a class="dashboard" href="/dashboard">DASHBOARD</a>
+            <a class="gallery" href="#">GALLERIES</a>
+            <a class="dashboard" href="#">SERVICES</a>
+            <a class="dashboard" href="#">ABOUT US</a>
+          </nav>
+          
+          {% if not current_user.is_authenticated: %}
+          <div class="topnav-right-section">
+            <a id="login-link" href="/auth/login">Log in</a>
+            <a id="singup-link" href="/auth/sign-up">Sign up</a>
+          </div>
+          {% else: %}
+          <div class="topnav-right-section">
+            <div class="dropdown">
+              <button class="dropdown-button">{{current_user.username|e}}</button>
+              <div class="dropdown-content">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/dashboard">Settings</a>
+                <a href="/auth/logout">Logout</a>
+              </div>
             </div>
-            {% else: %}
-            <div class="login-signup-container">
-              <ul class="login-links">
-                <li><a class="username" href="/dashboard">{{current_user.username|e}}</a></li>
-                <li class="login-li"><a class="logout" href="/auth/logout">Log out</a></li>
-              </ul>
-            </div>
-            {% endif %}
-            
-           </div>
-        </div>
+          </div>
+          {% endif %}
+        </header>
         <div class="content">
           {% block content %}
           {% endblock %} 
         </div>
+        <footer class="bottombar">
+          <h1>&#169; Joel Bolz 2024</h1>
+        </footer>
          
       </body>
 </html>
