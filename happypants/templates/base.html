@@ -4,40 +4,56 @@
         <link rel="stylesheet"  type= "text/css" href= "{{ url_for('static',filename='styles/stylesheet.css') }}">
         <link rel="icon" href= "{{ url_for('static',filename='images/logo2_icon.ico') }}"/>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/5cf1d61602.js" crossorigin="anonymous"></script>
 
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
 
         <header class="topnavbar">
-          <div class="topnav-left-section">
-            <h1 id="home">happypants.</h1>
-          </div>
-          <nav class="topnav-links">
-            <a class="home" href="/">HOME</a>
-            <a class="dashboard" href="/dashboard">DASHBOARD</a>
-            <a class="gallery" href="#">GALLERIES</a>
-            <a class="dashboard" href="#">SERVICES</a>
-            <a class="dashboard" href="#">ABOUT US</a>
-          </nav>
-          
-          {% if not current_user.is_authenticated: %}
-          <div class="topnav-right-section">
-            <a id="login-link" href="/auth/login">Log in</a>
-            <a id="singup-link" href="/auth/sign-up">Sign up</a>
-          </div>
-          {% else: %}
-          <div class="topnav-right-section">
-            <div class="dropdown">
-              <button class="dropdown-button">{{current_user.username|e}}</button>
-              <div class="dropdown-content">
-                <a href="/dashboard">Dashboard</a>
-                <a href="/dashboard">Settings</a>
-                <a href="/auth/logout">Logout</a>
-              </div>
+          <div class="topnav-top-section">
+            <div class="socials">
+                <a href="www.instagram.com"><i class="fa fa-instagram"></i></a>
+                <a href="www.discord.com"><i class="fab fa-discord"></i></a>
+                <a href="www.github.com/joelbolz"><i class="fa fa-github"></i></a>
+                <a href="www.instagram.com"><i class="fab fa-x-twitter"></i></a>
+            </div>
+            <div class="logo">
+              <h1 id="home">happypants.</h1>
+            </div>
+            <div class="top-end">
+
             </div>
           </div>
-          {% endif %}
+          <div class="topnav-bottom-section">
+            <div class="topnav-left-section">
+            </div>
+            <nav class="topnav-links">
+              <a class="home" href="/">HOME</a>
+              <a class="dashboard" href="/dashboard">DASHBOARD</a>
+              <a class="gallery" href="#">GALLERIES</a>
+              <a class="dashboard" href="#">SERVICES</a>
+              <a class="dashboard" href="#">ABOUT US</a>
+            </nav>
+            
+            {% if not current_user.is_authenticated: %}
+            <div class="topnav-right-section">
+              <a class="login-signup-link" href="/auth/login">Log in</a>
+              <a class="login-signup-link" href="/auth/sign-up">Sign up</a>
+            </div>
+            {% else: %}
+            <div class="topnav-right-section">
+              <div class="dropdown">
+                <button class="dropdown-button">{{current_user.username|e}}</button>
+                <div class="dropdown-content">
+                  <a href="/dashboard">Dashboard</a>
+                  <a href="/dashboard">Settings</a>
+                  <a href="/auth/logout">Logout</a>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          </div>
         </header>
         <div class="content">
           {% block content %}

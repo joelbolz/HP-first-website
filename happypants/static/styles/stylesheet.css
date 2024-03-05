@@ -1,5 +1,5 @@
 :root{
-    --topnavbar-height: 80px;
+    --topnavbar-height: 180px;
 }
 
 html{
@@ -10,9 +10,13 @@ body{
     flex-flow: column nowrap;
     height: 100%;
     margin: 0px;
-    background: white;
+    background: radial-gradient(rgb(208, 208, 208),rgb(146, 146, 146)95%);
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
+}
+.cover{
+    height:100%;
+    backdrop-filter: 10px blur;
 }
 
 .content{
@@ -24,19 +28,43 @@ body{
     margin-bottom: 21px;
 }
 .welcome{
+    justify-content: center;
+    gap: 200px;
     position: relative;
     display: flex;
-    flex-direction: column wrap;
-
-    padding-top: 150px;
-    left: 100px;
-    width: 30%;
+    flex-direction: row wrap;
+    align-items: center;
+    height: 700px;
+    padding-top: 115px;
+    width: 100%;
 }
 .welcome h1{
     line-height: 80px;
     font-weight: 300;
     font-size: 60px;
+    color: white;
+}
+.welcome-card{
+    display: flex;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.welcome img{
+    height: 590px;
+    width: auto;
+}
+.welcome p{
+    font-weight: 300;
+    text-align: center;
+    margin-top: 210px;
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 50px;
+    position: absolute;
     color: black;
+    background-color: white;
+
 }
 
 .error-container{
@@ -79,63 +107,108 @@ body{
 .topnavbar{
     display: flex;
     position: fixed;
+    flex-direction: column;
     top:0;
     height: var(--topnavbar-height);
     z-index: 10;
     width: 100%;
-    justify-content: center;
-    background-color: black;
+    justify-content: space-around;
+    background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.topnav-top-section{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 60%;
+    padding-bottom: 5px;
+
+}
+.socials{
+    padding: 20px;
+    justify-content: space-around;
+    display: flex;
+    width: 20%;
+    height: 30px;
+    font-size: 20px;
+    color: rgba(128, 128, 128, 0.579);
+}
+.socials a{
+    color: rgba(128, 128, 128, 0.579);
+    padding: 5px;
+    &:hover{color: rgb(196, 76, 36)}
+}
+.logo{
+    width: 80%;
+}
+.logo h1{
+    text-align: center;
+    color:black;
+    font-size: 40px;
+    font-weight: 300;
+}
+.top-end{
+    padding: 20px;
+    width: 20%;
+}
+
+.topnav-bottom-section{
+    display: flex;
+    padding-top: 10px;
+    width: 100%;
+    height: 30%;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
 }
 .topnav-left-section{
     display: flex;
     justify-content: flex-end;
-    width: 25%;
-    top:auto;
-    bottom: auto;
-}
-.topnav-left-section h1{
-    color:black;
-    background-color: white;
-    font-size: 20px;
-    font-weight: 300;
-    margin: 0 30px 0 0;
-    padding: 0 30px 0 30px;
-    line-height: var(--topnavbar-height);
-    height: var(--topnavbar-height);
-
-}
-#topnavbar-logo{
-    width: 60px;
-    height: auto;
-    padding: 10px 30px 10px 30px;
+    width: 25%;;
 }
 .topnav-links{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 50%;
+    height: 100%;
     position: relative;
-    top:auto;
-    bottom: auto;
+    overflow: hidden;
+
+    border-top: 10px solid;
+    border-image-slice: 1;
+    border-width: 2px;
+    border-image-source: linear-gradient(to right,  transparent, rgb(0,0,0), transparent);
+
+
 }
 .topnav-links a{
     padding: 0 20px 0 20px;
-    line-height: var(--topnavbar-height);
-    height: var(--topnavbar-height);
     text-decoration: none;
-    color: white;
+    height: 56px;
+    line-height: 56px;
+    color: black;
     transition: 0.3s ease-in-out;
-    &:hover{background-color: rgb(196, 76, 36);
-    transition: 0.3s ease-in-out;}
+    &:hover{background-color: rgb(196, 76, 36); color: white;
+    transition: 0.2s ease-in-out;}
 }
 .topnav-right-section{
     display: flex;
     justify-content: flex-end;
     width: 25%;
+    height: 100%;
+    line-height: 400%;
 
-    display: flex;
     top:auto;
     bottom: auto;
+}
+.login-signup-link{
+    color: black;
+    padding: 10px;
+    padding-right: 30px;
+    text-decoration: none;
+    line-height: 36px;
+    &:hover{color: rgb(196, 76, 36);}
 }
 .dropdown{
     position: relative;
@@ -147,15 +220,16 @@ body{
 }
 .dropdown-button{
     position: relative;
-    line-height: var(--topnavbar-height);
-    height: var(--topnavbar-height);
+    height: 47.12px;
+    line-height: 47.12px;
     font-size: inherit;
     border: none;
     outline: none;
-    color: white;
+    color: black;
     font-family: inherit;
     text-align: right;
     background-color: inherit;
+    transition: .2s;
 }
 .dropdown-content{
     z-index: -1;
@@ -163,17 +237,18 @@ body{
     position: absolute;
     padding-top:var(--topnavbar-height);
     min-width: 100%;
+    line-height: normal;
     background-color: rgb(196, 76, 36);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    animation: dropdown .3s ease-in;
+    animation: dropdown .2s ease-in;
 }
 @keyframes dropdown {
     0%   { 
-    transform: translateY(-100%); 	
+    transform: translateX(100%); 	
     opacity: 0%;	
     }
     100% { 
-    transform: translateY(0%); 
+    transform: translateX(0%); 
     opacity: 100%;
     } 
 }
@@ -187,6 +262,12 @@ body{
 .dropdown:hover .dropdown-content {
     display: flex;
     flex-direction: column;
+}
+.dropdown:hover .dropdown-button{
+    color: white;
+}
+.dropdown:hover body{
+    color: white;
 }
 
 #login-page{
