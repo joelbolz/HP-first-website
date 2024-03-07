@@ -9,14 +9,13 @@
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
-
         <header class="topnavbar">
           <div class="topnav-top-section">
             <div class="socials">
-                <a href="www.instagram.com"><i class="fa fa-instagram"></i></a>
-                <a href="www.discord.com"><i class="fab fa-discord"></i></a>
-                <a href="www.github.com/joelbolz"><i class="fa fa-github"></i></a>
-                <a href="www.instagram.com"><i class="fab fa-x-twitter"></i></a>
+                <a class="text-link" href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a>
+                <a class="text-link" href="www.discord.com"><i class="fab fa-discord"></i></a>
+                <a  class="text-link"href="https://github.com/joelbolz/HP-first-website" target="_blank"><i class="fa fa-github"></i></a>
+                <a  class="text-link"href="www.instagram.com"><i class="fab fa-x-twitter"></i></a>
             </div>
             <div class="logo">
               <h1 id="home">happypants.</h1>
@@ -29,17 +28,17 @@
             <div class="topnav-left-section">
             </div>
             <nav class="topnav-links">
-              <a class="home" href="/">HOME</a>
-              <a class="dashboard" href="/dashboard">DASHBOARD</a>
-              <a class="gallery" href="#">GALLERIES</a>
-              <a class="dashboard" href="#">SERVICES</a>
-              <a class="dashboard" href="#">ABOUT US</a>
+              <a class="navlink big-link" href="/">HOME</a>
+              <a class="navlink big-link" href="/dashboard">DASHBOARD</a>
+              <a class="navlink big-link" href="#">GALLERIES</a>
+              <a class="navlink big-link" href="#">SERVICES</a>
+              <a class="navlink big-link" href="/about-us">ABOUT US</a>
             </nav>
             
             {% if not current_user.is_authenticated: %}
             <div class="topnav-right-section">
-              <a class="login-signup-link" href="/auth/login">Log in</a>
-              <a class="login-signup-link" href="/auth/sign-up">Sign up</a>
+              <a class="login-signup-link text-link" href="/auth/login">Log in</a>
+              <a class="login-signup-link text-link" href="/auth/sign-up">Sign up</a>
             </div>
             {% else: %}
             <div class="topnav-right-section">

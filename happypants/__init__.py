@@ -17,6 +17,9 @@ def create_app(test_config=None):
     from happypants.encrypt import bcrypt
     bcrypt.init_app(app)
 
+    from happypants.socketio import socketio
+    socketio.init_app(app)
+
     from happypants.blueprints.auth.auth import login_manager
     login_manager.init_app(app)
     login_manager.login_view = "login"

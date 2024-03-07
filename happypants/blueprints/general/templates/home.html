@@ -2,16 +2,20 @@
 {% block title %}Home &#8211; happypants{% endblock %}
 {% block content %}
 <div class="welcome"> 
-    <h1>Welcome Home,<br/>{{current_user.username}}.</h1>
+    <div class="welcome-message">
+        <h1 id="Welcome-home">Welcome Home.</h1>
+        <h1 id="Welcome-msg">{{welcome_message}}</h1>
+    </div>
+
     <div class="welcome-card">
-        <p>“Don't ever, for any reason, do anything
-            <br/>for anyone, for any reason, ever, no
-            <br/>matter what. No matter where, or who,
-            <br/>or who you are with, or where you are
-            <br/>going or... or where you've been...
-            <br/>ever. For any reason, whatsoever.”
-           <br/>— Michael Scott,</p>
-        <img src="{{ url_for('general.static',filename='images/waves.png') }}">
+        <h1>Tend to what really deserves your time and let us take care of the rest.
+            <p><br></p>
+            <p><br></p>
+            The only website you will ever want to use again.</h1>
+
+        <a class="big-link" href="/auth/sign-up">GET STARTED</a>
+        <p>Already have an account? <a id="existing-acc" href="/auth/login">Log in</a>!</p>
+
     </div>
 </div>
 {% endblock %}
