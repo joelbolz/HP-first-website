@@ -9,5 +9,5 @@ liste = listdir("/home/happypants/Documents/PythonProjects/Flask/HP-first-websit
 print(blueprints)
 bps = []
 for bp in blueprints:
-    bps.append(import_module("happypants.blueprints."+bp))
+    bps.append(import_module("blueprints."+bp))
 

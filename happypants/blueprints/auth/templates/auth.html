@@ -8,25 +8,9 @@
         
     </head>
     <body id="login-page">
-        <div class="error-container">
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <ul class=flashes>
-                    {% for message in messages %}
-                        <li>{{"Error: "+ message }}</li>
-                    {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
-        </div>
+      
         <div id="login-hover-card">
-
-            <div id="banner" >
-                <img src="{{ url_for('auth.static',filename='images/banner.png') }}">
-                <a href="/"><img src="{{ url_for('static',filename='images/logo2.png') }}" id="loginlogo"></a>
-            </div>
-
-            <div id="form_">
+            <div class="form_">
                 {% block form %}
                 {% endblock %}
                 

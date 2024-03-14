@@ -1,9 +1,9 @@
 from flask import redirect, render_template, url_for, flash, request, Blueprint
 from flask_login import login_user, LoginManager, login_required, logout_user
-from happypants.models.users import User
-from happypants.db import db
-from happypants.encrypt import bcrypt
-from .forms import SignupForm, LoginForm, flash_errors
+from models import User
+from db import db
+from encrypt import bcrypt
+from forms import SignupForm, LoginForm, flash_errors
 from wtforms.validators import ValidationError
 from flask import get_flashed_messages
 
@@ -31,7 +31,7 @@ def login():
     flash_errors(form)
     
     rq_method = request.method
-    return render_template("login.html", form=form, rq_method=rq_method)
+    return render_template("login.html", form=form, rq_method=rq_method, content_type="auth")
 
 
 @bp.route("/sign-up", methods=["POST", "GET"])
@@ -46,7 +46,7 @@ def sign_up():
     
     flash_errors(form)
     rq_method = request.method
-    return render_template("signup.html", form=form, rq_method=rq_method)
+    return render_template("signup.html", form=form, rq_method=rq_method, content_type="auth")
 
 
 

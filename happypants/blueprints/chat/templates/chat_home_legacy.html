@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Chats &#8211; happypants{% endblock %}
+
+{% block content %}
+    <div class="chats">
+        <div class="existing-groups">
+            {% for group in groups: %}
+                <div class="group-card">
+                    <a href="/chat/{{group.id}}">{{group.name}}</a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="form-card create-group">
+            <form class="form_" action="#" method="post">
+                {{ create_form.hidden_tag() }}
+                <h1>Create Chatroom</h1>
+                <div class="input-wrapper">
+                    {{ create_form.name }}
+                    <label class="label" for="Name">Name</label>
+                </div>
+                {{ create_form.create_submit(class="button", id="createbtn")}}
+            </form>
+        </div>
+        <div class="form-card create-group">
+            <form class="form_" action="#" method="post">
+                {{ join_form.hidden_tag() }}
+                <h1>Join existing Chatroom</h1>
+                <div class="input-wrapper">
+                    {{ join_form.id }}
+                    <label class="label" for="Name">Name</label>
+                </div>
+                {{ join_form.join_submit(class="button", id="joinbtn")}}
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,21 +1,40 @@
 {% extends "base.html" %}
 {% block title %}Home &#8211; happypants{% endblock %}
 {% block content %}
-<div class="welcome"> 
-    <div class="welcome-message">
-        <h1 id="Welcome-home">Welcome Home.</h1>
-        <h1 id="Welcome-msg">{{welcome_message}}</h1>
+<div class="content" id={{content_type}}>
+    <div class="on-banner">
+        <div class="home-msg">
+            <h1>Welcome to happypants.</h1>
+        </div>
+        <div class="button-wrapper">
+            <a class="sign-up-link" href="/auth//sign-up">GET STARTED</a>
+        </div>
     </div>
-
-    <div class="welcome-card">
-        <h1>Tend to what really deserves your time and let us take care of the rest.
-            <p><br></p>
-            <p><br></p>
-            The only website you will ever want to use again.</h1>
-
-        <a class="big-link" href="/auth/sign-up">GET STARTED</a>
-        <p>Already have an account? <a id="existing-acc" href="/auth/login">Log in</a>!</p>
-
+    <div class="under-banner">
+        <h2>a Flask Learning Project where You can do fun Shit like</h2>
+        <div class="activities">
+            <div class="activity-card">
+                <img src="static/images/braille.png">
+                <h3>Rendering</h3>
+                <p>Soon you will able to upload any image and render it with ASCII, or UNICODE braille characters.</p>
+            </div>
+            <div class="activity-card">
+                <img src="static/images/chat.png">
+                <h3>Chatting</h3>
+                <p>Chat with you friends in groups or in personal chats. All end-to-end-encrypted!</p>  
+            </div>
+            <div class="activity-card">
+                <img src="static/images/explore.png">
+                <h3>Exploring</h3>
+                <p>You can navigate this site and click random links that bring you to all the different urls, most of which serve no particular purpose!</p>
+            </div>
+            <div class="activity-card">
+                <img src="static/images/collab.png">
+                <h3>Collaborating</h3>
+                <p>Want to learn more stuff about full-stack-development, flask or design-patterns? Join the project and add functionality yourself!</p>
+            </div>
+        </div>
     </div>
 </div>
+
 {% endblock %}

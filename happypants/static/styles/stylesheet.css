@@ -1,5 +1,5 @@
 :root{
-    --topnavbar-height: 20vh;
+    --topnavbar-height: 17vh;
     --bottombar-height: 10vh;
     --card-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
@@ -9,22 +9,26 @@
 }
 
 html{
-    min-height: 100vh;
+    min-height: calc(100vh + var(--bottombar-height));
 }
 body{
     display: flex;
     flex-flow: column nowrap;
-    height: 100%;
+    min-height: calc(100vh + var(--bottombar-height));
     margin: 0px;
+    /*
     background: linear-gradient(
         45deg,
-        white,
-        white 62%,
+        var(--base-grey),
+        var(--base-grey) 62%,
         var(--base-orange) 62%,
         var(--base-orange) 72%,
-        white 72%
+        var(--base-grey) 72%
 
     );
+    */
+    background-image: url("../images/lava.png");
+    background-size: 100% 100%;
     background-attachment: fixed;
 
     font-family: 'Montserrat', sans-serif;
@@ -39,10 +43,9 @@ body{
     flex-flow: column wrap;
     justify-content: center;
     width: 100%;
-    min-height: calc(100vh - var(--topnavbar-height) - 2.25rem - 1.575rem);
+    flex-grow: 1;
     z-index: 2;
-    padding-top: calc(var(--topnavbar-height) + 2.25rem);
-    padding-bottom: 1.575rem;
+    margin-top: var(--topnavbar-height);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 }
 .text-link{
@@ -56,12 +59,64 @@ body{
     &:hover{background-color: var(--base-orange); color: white;
     }
 }
+.input-wrapper{
+    position: relative;
+    height: 3.75rem;
+}
+input[type="text"]{
+    box-sizing: border-box;
+    font-size: medium;
+    background-color: rgb(238, 238, 238);
+    outline: none;
+    border: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 1.5rem 1.2rem 0 1.2rem;
+    transition: .2s ease all;
+    &:focus{
+        box-shadow: 0 1px 0 0 rgb(75, 75, 75);
+    }
+    &::placeholder {
+        color: transparent;
+      }
+}
 
+label{
+    position: absolute;
+    top: 1.275rem;
+    left: 1.125rem;
+    color: rgb(168, 168, 168);
+    pointer-events: none;
+    transform-origin: left center;
+    transition: transform 250ms;
+    font-size: medium;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  /* Move the label above the button and scale it down */
+  transform: translateY(-70%) scale(0.75);
+}
+
+.button{
+    display: block;
+    color: white;
+    background-color: var(--base-orange);
+    cursor: pointer;
+    padding: 1.5rem;
+    outline: none;
+    border: none;
+}
+.button:hover{
+    background-color: black;
+}
 .main-p-card{
     width: 75%;
     align-self: center;
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: black;
     box-shadow: var(--card-box-shadow);
     padding: 1.5rem;
 
@@ -75,81 +130,271 @@ body{
     margin: 0;
 }
 .main-p-card a{
-    color: black;
+    color: white;
 }
 
-.welcome{
-    display: flex;
-    justify-content: center;
-    gap: 10vw;
-    position: relative; 
-    flex-direction: row wrap;
-    align-items: center;
-    width: 100%;
-}
-.welcome-message{
-    margin-bottom: 15rem;
-}
-.welcome-message h1{
-    text-overflow: ellipsis;
-    overflow: hidden;
-    line-height: 3.75rem;
-    height: 4rem;
-    font-weight: 300;
-    font-size: 3.5rem;
-}
-#Welcome-home{
-    opacity: 0;
-    animation: welcome 0.5s ease-in 0.1s forwards;
-}
-@keyframes welcome {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 100%;
-    }
-}
-#Welcome-msg{
-    opacity: 0;
-    animation: welcome 0.5s ease-in 1s forwards;
-}
-@keyframes welcome {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 100%;
-    }
-}
-.welcome-card{
-    margin-bottom: 5rem;
+/* HOMEPAGE */
 
-    width:20vw;
+#home{
+
+    backdrop-filter: blur(20px);
+}
+.on-banner{
     display: flex;
     flex-direction: column;
-    padding: 1.5rem ;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    width: 100%;
+    height: 40vh;
+    margin-bottom: auto;
+}
+.home-msg{
+    display: flex;
+
+    color:white;
+    font-size: 2rem;
+    margin: 0;
+}
+.home-msg h1{
+    margin: 0;
+}
+.button-wrapper{
+    display: flex;
+    margin: 0;
+
+}
+.sign-up-link{
+    color: white;
+    border: solid white;
+    border-width: 1px;
+    height: 4.2rem;
+    line-height: 4.2rem;
+    padding: 0 6rem 0 6rem;
+    text-decoration: none;
+    &:hover{background-color: rgba(0,0,0,0.5);}
+}
+.under-banner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    flex-grow: 1;
     background-color: black;
     color: white;
     box-shadow: var(--card-box-shadow);
 }
-.welcome a{
-    padding: 1.5rem;
-    color: black;
-    background-color: white;
-    &:hover{background-color:var(--base-orange);}
+.under-banner h2{
+    margin-top: 2rem;
 }
-.welcome p{
-    margin: 2rem 0 0 0;
+.activities{
+    display: flex;
+    flex-direction: row;
+      
+    justify-content: space-between;
+    gap:5rem;
+    align-items: flex-start;
+
+    margin: 0 5rem 3rem 5rem;
+}
+.activity-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    font-size: small;
+    width:20%;
 }
-#existing-acc{
-    padding: 0;
+.activity-card img{
+    height: 7rem;
+    width: auto;
+}
+
+.activity-card p{
+    margin-top: auto;
+}
+/*Chats*/
+#chat{
+
+
+}
+.chat-main{
+    display: flex;
+    flex:1;
+    width: 100%;
     color: white;
-    background: none;
-    &:hover{color: var(--base-orange);}
 }
+
+.chat-groups{
+    display: flex;
+    flex-flow: column nowrap;
+
+    min-width: 25rem;
+    max-width: 30rem;
+    max-height: 73vh;
+    margin-left: 1rem;
+    background-color: black;
+}
+.chat-list{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.chat-top-bar{
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+}
+.chat-options{
+    display: flex;
+    margin-left: auto;
+    gap: 1rem;
+    padding: 0.8rem;
+}
+.chat-options a{
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+	background-color: black;
+}
+::-webkit-scrollbar-thumb {
+	background-color: var(--base-orange);
+}
+.chat-main input:focus + label,
+.chat-main input:not(:placeholder-shown) + label {
+  /* Move the label above the button and scale it down */
+  transform: translateY(-55%) scale(0.75);
+}
+.chat-main .input-wrapper{
+    margin: 0.8rem;
+}
+.chat-main input[type="text"]{
+    padding: 1.5rem 1.2rem 0.2rem 1.2rem;
+
+    background-color: var(--base-grey);
+    color: white;
+}
+.chat-main label{
+    top: 0.9rem;
+}
+
+.chat-group-preview{
+    display: flex;
+    flex-direction: row nowrap;
+    width: 100%;
+    height: 5rem;
+
+    border-top: 10px solid;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: linear-gradient(to right,  transparent, var(--base-orange), transparent);
+    &:hover{background: var(--base-grey);}
+}
+.chat-group-dis{
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.chat-pic{
+    align-self: center;
+    padding: 0.8rem;
+    width: 2.5rem;
+    border-radius: 50%;
+}
+.self-profile-pic{
+    width: 3rem;
+    height: 3rem;
+}
+
+.chat-window{
+    display: flex;
+    flex-flow: column nowrap;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    max-height: 73vh;
+    margin-right: 1rem;
+    flex-grow: 1;
+    background-color: black;
+}
+.chat-messages{
+    display: flex;
+    flex-flow: column nowrap;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    flex-grow: 1;
+    background-color: var(--base-grey);
+    white-space: wrap;
+
+}
+.msg-box {
+    max-width: 40% ;
+    margin: 1rem 1.5rem 0 auto;
+    background: var(--base-orange);
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    position: relative;
+    border-radius: 25px;
+
+    white-space: wrap;
+}
+  
+.own-msg:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid var(--base-orange);
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--base-orange);
+    border-bottom: 10px solid transparent;
+    right: -10px;
+    top: 6px;
+    white-space: wrap;
+
+}
+  
+.foreign-msg:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid #00bfb6;
+    border-top: 10px solid #00bfb6;
+    border-bottom: 10px solid transparent;
+    left: -10px;
+    top: 6px;
+}
+
+.chat-send-box{
+    height: 10vh;
+}
+.chat-send-box form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+#message-wrapper{
+    width: 85%;
+}
+#sndbtn-wrapper{
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    align-items: center;
+    margin-left: auto;
+}
+.chat-send-box input[type="button"]{
+    flex-grow: 1;
+}
+
 .error-container{
     position: fixed;
     display: flex;
@@ -195,8 +440,8 @@ body{
     z-index: 10;
     width: 100%;
     justify-content: space-around;
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     box-shadow: var(--card-box-shadow);
 }
 
@@ -216,7 +461,7 @@ body{
 .socials a{
     padding: 0.375rem;
     font-size: 1.4rem;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .logo{
@@ -257,14 +502,14 @@ body{
     border-top: 10px solid;
     border-image-slice: 1;
     border-width: 2px;
-    border-image-source: linear-gradient(to right,  transparent, black, transparent);
+    border-image-source: linear-gradient(to right,  transparent, var(--base-orange), transparent);
 
 
 }
 .topnav-links a{
-    height: 4.2rem;
-    line-height: 4.2rem;
-    color: black;
+    height: calc(0.3 * var(--topnavbar-height));
+    line-height: calc(0.3 * var(--topnavbar-height));
+    color: white;
 
 }
 .topnav-right-section{
@@ -278,7 +523,7 @@ body{
     bottom: auto;
 }
 .login-signup-link{
-    color: black;
+    color: white;
     padding: 0.75rem;
     padding-right: 2.25rem;
     text-decoration: none;
@@ -303,7 +548,7 @@ body{
     font-size: inherit;
     border: none;
     outline: none;
-    color: black;
+    color: white;
     font-family: inherit;
     text-align: right;
     background-color: inherit;
@@ -328,8 +573,8 @@ body{
     padding: 0.9rem 1.2rem;
     text-decoration: none;
     font-size: 1.05rem;
-    &:hover{background-color: white;
-            color: black;}
+    &:hover{background-color: black;
+            color: white;}
 }
 .dropdown:hover .dropdown-content {
     transform: translateX(0%);
@@ -343,12 +588,11 @@ body{
 .bottombar{
     z-index: 1;
     display: flex;
-    min-height: var(--bottombar-height);
     margin-top:auto;
     width: 100%;
     justify-content:center;
     align-content: center;
-    background-color: rgb(36,36,36);
+    background-color: var(--base-orange);
 }
 .bottombar h1{
     color: white;
@@ -425,12 +669,6 @@ body{
     height: auto;
 }
 
-#form_{
-    width: 50%;
-    height: 100%;
-    position: relative;
-    float:right;
-}
 
 #form_-noanim{
     width: 50%;
@@ -451,7 +689,7 @@ body{
 
     overflow: hidden;
 }
-#form_ form{
+.form_ form{
     font-size: x-large;
     color: black;
     text-align: left;
@@ -478,62 +716,7 @@ body{
     } 
 }
 
-#form_ .input-wrapper{
-    position: relative;
-    height: 3.75rem;
-    margin: 0 auto 2.25rem auto;
-}
-#form_ input{
-    box-sizing: border-box;
-    font-size: medium;
-    background-color: rgb(238, 238, 238);
-    outline: none;
-    border: none;
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    padding: 1.5rem 1.2rem 0 1.2rem;
-    transition: .2s ease all;
-    &:focus{
-        box-shadow: 0 1px 0 0 rgb(75, 75, 75);
-    }
-    &::placeholder {
-        color: transparent;
-      }
-}
 
-#form_ label{
-    position: absolute;
-    top: 1.275rem;
-    left: 1.125rem;
-    color: rgb(168, 168, 168);
-    pointer-events: none;
-    transform-origin: left center;
-    transition: transform 250ms;
-    font-size: medium;
-}
-
-#form_ input:focus + label,
-#form_ input:not(:placeholder-shown) + label {
-  /* Move the label above the button and scale it down */
-  transform: translateY(-70%) scale(0.75);
-}
-
-
-#form_ input.button{
-    display: block;
-    border-radius: 15px;
-    color: white;
-    background: linear-gradient(20deg, rgb(0, 0, 0) , var(--base-orange));
-    cursor: pointer;
-    padding: 0.75rem;
-}
-#form_ input.button:hover{
-
-    background: linear-gradient(20deg, rgba(0, 0, 0, 1) , rgb(196, 52, 0));
-
-}
 
 
 

@@ -9,8 +9,8 @@ def home():
         welcome_message = current_user.username
     else:
         welcome_message = "Welcome to happypants."
-    return render_template("home.html", welcome_message=welcome_message)
+    return render_template("home.html", welcome_message=welcome_message, content_type="home")
 
 @bp.route("/about-us")
 def aboutus():
-    return render_template("about-us.html")
+    return render_template("about-us.html", content_type="general")

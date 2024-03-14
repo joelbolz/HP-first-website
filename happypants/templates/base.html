@@ -5,10 +5,23 @@
         <link rel="icon" href= "{{ url_for('static',filename='images/logo2_icon.ico') }}"/>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400" rel="stylesheet">
         <script src="https://kit.fontawesome.com/5cf1d61602.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
+      <div class="error-container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                    <li>{{"Error: "+ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
         <header class="topnavbar">
           <div class="topnav-top-section">
             <div class="socials">
@@ -18,7 +31,7 @@
                 <a  class="text-link"href="www.instagram.com"><i class="fab fa-x-twitter"></i></a>
             </div>
             <div class="logo">
-              <h1 id="home">happypants.</h1>
+              <h1>happypants.</h1>
             </div>
             <div class="top-end">
 
@@ -54,13 +67,12 @@
             {% endif %}
           </div>
         </header>
-        <div class="content">
-          {% block content %}
-          {% endblock %} 
-        </div>
+        {% block content %}
+        {% endblock %} 
+
         <footer class="bottombar">
           <h1>&#169; Joel Bolz 2024</h1>
         </footer>
-         
       </body>
+      
 </html>

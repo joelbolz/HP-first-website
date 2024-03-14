@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %} $room_id &#8211; happypants {% endblock %}
+{% block content %}
+<div class="content" id={{content_type}}>
+
+    <div class="chat-main">
+        <div class="chat-groups" id="chat-list">
+            <div class="chat-top-bar">
+                <img class="chat-pic self-profile-pic" src="static/images/waves.jpg">
+                <div class="chat-options">
+                    <a  class="text-link" href="https://github.com/joelbolz/HP-first-website" target="_blank"><i class="fa fa-plus"></i></a>
+                    <a  class="text-link" href="www.instagram.com"><i class="fa fa-bars"></i></a>
+                </div>
+            </div>
+            <div class="input-wrapper">
+                <input id="chat-search-bar" type="text" placeholder="search">
+                <label class="label" for="chat-search-bar">Search for chats</label>
+            </div>
+            <div class="chat-list">
+                {% for group in groups: %}
+                    <div class="chat-group-preview" id={{group.id}}>
+                        <img class="chat-pic" src="static/images/group_icon_default.png">
+                        <div class="chat-group-dis">
+                            <div class="chat-group-title">
+                                <h3 style="line-height: 1rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">{{group.name}}</h3>
+                            </div>
+                            <div class="chat-group-lastmsg">
+                                <p style="line-height: 0.1rem; font-size: small; white-space: nowrap;">Hallo macht voll Bock ja! {{group.messages[-1]}}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="chat-window">
+            <div class="chat-top-bar">
+                <img class="chat-pic self-profile-pic" src="static/images/waves.jpg">
+                <h3>This will be the name of the active chat!</h3>
+            </div>
+            <div class="chat-messages" id="messages">
+            </div>
+            <div class="chat-send-box">
+                <form action="#" method="post">
+                    {{ send_form.hidden_tag() }}
+                    <div class="input-wrapper" id="message-wrapper">
+                        {{ send_form.message }}
+                        <label class="label" for="message">Message</label>
+                    </div>
+                    <div class="input-wrapper" id="sndbtn-wrapper">
+                        {{ send_form.button(class="button", id="sndbtn", onClick="sendMessage()") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+
+      
+    </div>
+</div>
+
+<script type="text/javascript">
+    var socketio = io();
+    var room_id;
+    const messages = document.getElementById("messages")
+    socketio.on("message", (data) =>{
+        const origin_room = data.origin_room
+        if(room_id != origin_room) return;
+        const msg = data.message;
+        messages.innerHTML += `<p class="msg-box own-msg">${msg}</p>`;
+    })
+
+    const sendMessage = () => {
+        const message = document.getElementById("message");
+        if (message.value == "") return;
+        console.log(typeof room_id)
+        socketio.emit("message", {data: message.value, origin_room: room_id});
+        message.value = "";
+    }
+
+    $(".chat-group-preview").click(function() {
+        $(".chat-group-preview").css("background", "black")
+        event.currentTarget.style.background = "rgb(50,50,50)";
+
+        room_id = event.currentTarget.id;
+    }
+    )
+</script>
+{% endblock %}
