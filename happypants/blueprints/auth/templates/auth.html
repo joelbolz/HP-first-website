@@ -8,7 +8,17 @@
         
     </head>
     <body id="login-page">
-      
+        <div class="error-container">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class=flashes>
+                    {% for message in messages %}
+                        <li>{{"Error: "+ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
         <div id="login-hover-card">
             <div class="form_">
                 {% block form %}

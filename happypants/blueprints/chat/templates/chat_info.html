@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}About us &#8211; happypants{% endblock %}
+
+{% block content %}
+<div class="content" id={{content_type}}>
+
+    <div class="main-p-card">
+        <h1>SocketIO Chatting</h1>
+        <p><br/></p>
+
+        <h2>How does the chatting on this website work?</h2>
+        <p>The project uses the flask-socketio module to create and manage websockets and events.
+            Sending a message publishes that message into an event. The server then listens to that
+            event and then relays it to the specified destination (group or personal user).
+            
+        </p>
+        <p><br/></p>
+
+        <h2>Are the messages end-to-end-encrypted?</h2>
+        <p>Well no, actually, not yet. I am planning to further get into security and encryption later on. For now
+            you can chat on localhost in development mode. When I deploy the app for the first time, I will have all
+            the security concerns figured out. I will make sure to use the https protocol, so that client-server-communication
+            is automatically encrypted.
+        <p><br/></p>
+
+        <h2>How exactly does the creation of the chats work?</h2>
+        <p>For now, you create a chat directly via a wtform. With that, a new chatroom is saved into the database with a unique id.
+            After that, anyone who is logged in can join that room by its id. I know this is still very inconvinient. Later on
+            I want to implement, that the only way to join an existing room is by an invitation from an admin of that room or by being added
+            during the creation.
+        </p>
+        <p><br/></p>   
+    </div>
+</div>
+{% endblock %}

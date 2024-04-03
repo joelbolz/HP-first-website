@@ -29,7 +29,7 @@ bcrypt.init_app(app)
 
 from blueprints.auth.auth import login_manager
 login_manager.init_app(app)
-login_manager.login_view = "login"
+login_manager.login_view = "auth.login"
 
 # register blueprints
 from blueprints import bps
@@ -48,5 +48,4 @@ if not exists(join(dirname(__file__),"/instance/database.db")):
         db.create_all()
 
 if __name__ == "__main__":
-
-    socketio.run(app, debug=True)
+    socketio.run(app, debug=True, host="0.0.0.0", port="5000")

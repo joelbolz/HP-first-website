@@ -5,7 +5,7 @@ chdir(getcwd()+"/happypants/blueprints")
 blueprints = [bp for bp in listdir() if path.isdir(bp) and bp != "__pycache__"]
 chdir("..")
 chdir("..")
-liste = listdir("/home/happypants/Documents/PythonProjects/Flask/HP-first-website/happypants/blueprints")
+liste = listdir("./happypants/blueprints")
 print(blueprints)
 bps = []
 for bp in blueprints:

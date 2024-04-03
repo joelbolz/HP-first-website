@@ -4,7 +4,7 @@
     --card-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
     --base-orange: rgb(196, 76, 36);
-    --base-grey: rgb(36,36,36);
+    --base-grey: rgb(18, 7, 0);
 
 }
 
@@ -27,9 +27,7 @@ body{
 
     );
     */
-    background-image: url("../images/lava.png");
-    background-size: 100% 100%;
-    background-attachment: fixed;
+    
 
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
@@ -47,6 +45,8 @@ body{
     z-index: 2;
     margin-top: var(--topnavbar-height);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+
+    background-color: var(--base-grey);
 }
 .text-link{
     &:hover{color: var(--base-orange)}
@@ -116,8 +116,6 @@ input:not(:placeholder-shown) + label {
     width: 75%;
     align-self: center;
     color: white;
-    background-color: black;
-    box-shadow: var(--card-box-shadow);
     padding: 1.5rem;
 
 }
@@ -136,9 +134,11 @@ input:not(:placeholder-shown) + label {
 /* HOMEPAGE */
 
 #home{
-
-    backdrop-filter: blur(20px);
+    background-image: url("../images/lava.png");
+    background-size: 100% 100%;
+    background-attachment: fixed;
 }
+
 .on-banner{
     display: flex;
     flex-direction: column;
@@ -148,6 +148,8 @@ input:not(:placeholder-shown) + label {
     width: 100%;
     height: 40vh;
     margin-bottom: auto;
+
+    backdrop-filter: blur(20px);
 }
 .home-msg{
     display: flex;
@@ -495,7 +497,6 @@ input:not(:placeholder-shown) + label {
     display: flex;
     justify-content: space-between;
     width: 50%;
-    height: 100%;
     position: relative;
     overflow: hidden;
 
@@ -507,7 +508,7 @@ input:not(:placeholder-shown) + label {
 
 }
 .topnav-links a{
-    height: calc(0.3 * var(--topnavbar-height));
+    flex-grow: 1;
     line-height: calc(0.3 * var(--topnavbar-height));
     color: white;
 
@@ -527,7 +528,9 @@ input:not(:placeholder-shown) + label {
     padding: 0.75rem;
     padding-right: 2.25rem;
     text-decoration: none;
-    line-height: 2.7;
+    height: calc(1 * var(--topnavbar-height));
+
+    line-height: calc(.15 * var(--topnavbar-height));
 }
 .dropdown{
     position: relative;

@@ -10,6 +10,7 @@ bp = Blueprint("chat", __name__, url_prefix="/chat", static_folder="static", tem
 
 
 @bp.route("/", methods=["POST", "GET"])
+@login_required
 def chat_home():
     send_form = ChatMessageForm()
 
@@ -35,6 +36,9 @@ def chat_home():
     return render_template("chat_home.html", groups=groups, create_form=create_form, join_form=join_form, send_form=send_form, content_type="chat")
 
 
+@bp.route("/info")
+def chat_info():
+    return render_template("chat_info.html", content_type="general")
 
 
 @socketio.on("connect")
